@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Eiga</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="tab_list">TAYANGAN</string>
+    <string name="tab_fav">FAVORIT</string>
+    <string name="tab_notif">PEMBERITAHUAN</string>
+    <string name="movies">Bioskop</string>
+    <string name="tv_shows">TV</string>
+    <string name="trending">Sedang Trending</string>
+    <string name="most_popular">Paling Populer</string>
+    <string name="listposter">daftarPoster</string>
+    <string name="img_detail_poster">img_detil_poster</string>
+    <string name="title">Judul</string>
+    <string name="release_date">Tanggal Rilis</string>
+    <string name="genre">Genre</string>
+    <string name="rating">Rating</string>
+    <string name="language">Bahasa</string>
+    <string name="popularity">Popularitas</string>
+    <string name="overview">Sinopsis</string>
+    <string name="detail_title">Informasi</string>
+    <string name="change_language_settings">Ubah Pengaturan Bahasa</string>
+    <string name="search_mov">Cari judul bioskop dari API</string>
+    <string name="search_tv">Cari judul TV dari API</string>
+    <string name="search_result_poster">Search result poster</string>
+    <string name="search">Cari</string>
+    <string name="fav_poster">fav_poster</string>
+    <string name="favorite_false">favorit_false</string>
+    <string name="favorite_true">favorit_true</string>
+    <string name="add_fav">Ditambahkan ke favorit</string>
+    <string name="remove_fav">Dihapus dari favorit</string>
+    <string name="search_fav_mov">Cari favorit bioskop</string>
+    <string name="search_fav_tv">Cari favorit TV</string>
+    <string name="release_reminder_tag">Pengingat Rilis</string>
+    <string name="release_reminder_desc">Pengingat film yang rilis hari ini</string>
+    <string name="daily_reminder_tag">Pengingat Tiap Hari</string>
+    <string name="daily_reminder_desc">Pengingat tiap hari untuk membuka Eiga</string>
+    <string name="daily_reminder_setup_msg">Pengingat tiap hari aktif</string>
+    <string name="daily_notif_title">Pengingat tiap hari</string>
+    <string name="daily_notif_message">Jangan lupa untuk membuka Eiga!</string>
+    <string name="daily_reminder_off_msg">Pengingat tiap hari mati</string>
+    <string name="release_reminder_setup_msg">Pengingat rilis aktif</string>
+    <string name="release_reminder_off_msg">Pengingat rilis mati</string>
+    <string name="release_reminder_title">Film rilis hari ini</string>
+    <string name="widget_image">widget_image</string>
+</resources>

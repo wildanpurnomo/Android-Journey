@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_movie"
+        android:icon="@drawable/ic_local_movies_black_24dp"
+        android:title="@string/movies"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/navigation_tv"
+        android:icon="@drawable/ic_live_tv_black_24dp"
+        android:title="@string/tv_shows"
+        app:showAsAction="ifRoom" />
+</menu>
