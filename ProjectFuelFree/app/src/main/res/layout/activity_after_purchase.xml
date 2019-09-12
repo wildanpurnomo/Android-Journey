@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/TVnotaProductBought"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Pertamax"
+            android:textColor="@color/colorBiruPropo"
+            android:textStyle="bold"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/TVnotaDateOfTransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            tools:text="Tanggal"
+            android:textColor="@color/colorBiruPropo"
+            android:textSize="15dp"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/TVnotaHargaPerLiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        tools:text="Harga 1 liter : 10000"
+        android:textColor="@color/colorBiruPropo"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/TVnotaNominalBought"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        tools:text="Nominal yang dibeli : 10000"
+        android:textColor="@color/colorBiruPropo"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/TVnotaLiterGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        tools:text="Liter yang didapat : 10 liter"
+        android:textColor="@color/colorBiruPropo"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/TVnotaToken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        tools:text="1234-5678-9102"
+        android:textAlignment="center"
+        android:textColor="@color/colorBiruPropo"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Masukkan token ke filling machine SPBU terdekat. Terima kasih telah menggunakan aplikasi Fuel Free."
+        android:textAlignment="center"
+        android:textColor="@color/colorBiruPropo"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/BTNbackToUserActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBiruPropo"
+        android:text="Kembali ke Main Menu"
+        android:textColor="@color/White"/>
+
+
+
+</LinearLayout>

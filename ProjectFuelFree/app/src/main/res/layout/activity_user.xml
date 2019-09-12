@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/TVwelcomeUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Welcome!"
+        android:textColor="@color/colorBiruPropo"
+        android:textSize="25dp"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/BTNtoPurchaseActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorBiruPropo"
+        android:textColor="@color/White"
+        android:text="Beli Bensin"
+        />
+
+    <Button
+        android:id="@+id/BTNtoHistoryActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorBiruPropo"
+        android:textColor="@color/White"
+        android:text="Riwayat Transaksi"/>
+
+    <Button
+        android:id="@+id/BTNtoTopUpInfoActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorBiruPropo"
+        android:textColor="@color/White"
+        android:text="Informasi Top Up"/>
+
+    <Button
+        android:id="@+id/BTNlogOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorBiruPropo"
+        android:textColor="@color/White"
+        android:text="Logout"
+        />
+
+</LinearLayout>

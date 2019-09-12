@@ -1,0 +1,18 @@
+﻿<Window x:Class="FuelFreeSPBUSimulator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FuelFreeSPBUSimulator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="140" Margin="342,40,0,0" VerticalAlignment="Top" Width="137" x:Name="logoFuelFree" Source="img/icon_fuel_free.png"/>
+        <Label Content="FUEL FREE SPBU SIMULATOR" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" HorizontalAlignment="Left" Margin="241,185,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.834,-0.149" Height="43" Width="319"/>
+        <Label Content="Masukkan Token" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" HorizontalAlignment="Left" Margin="241,233,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.834,-0.149" Height="43" Width="319"/>
+        <TextBox x:Name="tokenTextBox" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="37" Margin="289,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" GotFocus="tokenTextBox_GotFocus" BorderThickness="3"/>
+        <Button x:Name="btnSearchToken" FontSize="15" Content="Cari Nota" HorizontalAlignment="Left" Margin="342,343,0,0" VerticalAlignment="Top" Width="119" Height="23" Click="btnSearchToken_Click"/>
+
+
+    </Grid>
+</Window>
