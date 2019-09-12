@@ -2,7 +2,7 @@
 SecureNotesApp
 ###################
 
-My first project, everything was ugly and still. 
+My first project, everything was ugly and it still now. 
 The idea was making todo note app, but instead of just
 saving the app would encrypt it using Base-64. User would need
 to authenticate themself via password in order to be able to decrypt.
