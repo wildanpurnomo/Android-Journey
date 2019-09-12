@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6EAED"
+    tools:context=".pembuatan_sim_baru.JadwalUjianActivity">
+
+    <include
+        android:id="@+id/toolbarLayoutJadwalUjian"
+        layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarLayoutJadwalUjian"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:padding="21dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/TV_JadwalUjian_Keterangan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jadwal ujian akan diumumkan jika seluruh submisi Anda disetujui."
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

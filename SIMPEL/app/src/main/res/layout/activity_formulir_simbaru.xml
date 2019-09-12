@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6EAED"
+    tools:context=".pembuatan_sim_baru.pengisian_formulir.FormulirSIMBaruActivity">
+
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarLayout"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:padding="35dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Data diri"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Lengkap"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_formSIMBaruNamaLengkap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:hint="Masukkan sesuai nama di KTP"
+            android:inputType="text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alamat"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_formSIMBaruAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Jogja"
+            android:inputType="text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_formSIMBaruNomorTelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="088899991111"
+            android:inputType="number"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Orang Tua / Wali"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_formSIMBaruOrtuWali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Ortu"
+            android:inputType="text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon Orang Tua / Wali"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_formSIMBaruNoTelpOrtuWali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="088899991112"
+            android:inputType="number"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/BTN_formSIMBaruLanjut"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/rounded_button"
+            android:text="Lanjut"
+            android:textColor="#FFFFFF" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

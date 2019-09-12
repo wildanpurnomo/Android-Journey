@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginLeft="21dp"
+    android:layout_marginRight="21dp"
+    android:layout_marginBottom="15dp"
+    android:padding="35dp"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical">
+    
+    <TextView
+        android:id="@+id/TV_history_tanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        tools:text="15 April 2xxx"
+        android:textColor="@color/colorSimpel"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        />
+    
+    <TextView
+        android:id="@+id/TV_history_jenisForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Formulir SIM Baru"
+        android:textStyle="bold"
+        android:textColor="@color/colorSimpel"
+        android:textSize="21sp"/>
+
+</LinearLayout>

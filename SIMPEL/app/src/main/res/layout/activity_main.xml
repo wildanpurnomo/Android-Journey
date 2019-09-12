@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#20C456"
+    tools:context=".login_and_register.MainActivity">
+
+    <ImageView
+        android:id="@+id/logoApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:padding="15dp"
+        android:src="@drawable/logo"
+        />
+
+    <LinearLayout
+        android:id="@+id/loginFormContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoApp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="31dp"
+        android:background="@drawable/rounded_layout"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="#20C456"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/ET_loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:hint="Masukkan email"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="#20C456"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/ET_loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:hint="Masukkan password"
+            android:inputType="textPassword"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/BTN_loginProceed"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_button"
+            android:text="LOGIN"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lupa kata sandi"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textColor="#20C456" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/TV_toRegisterTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:text="Don't have account? Register here!"
+        android:textAlignment="center"
+        android:textColor="#20C456"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="12dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6EAED"
+    tools:context=".fragments.MyAccountFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:padding="35dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:src="@drawable/account_dummy"/>
+
+        <TextView
+            android:id="@+id/TV_AccFragment_DisplayNamaLengkap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:hint="Wildan Fajar Purnomo"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="normal"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/TV_AccFragment_DisplayUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:hint="Username : wilwil"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            android:textStyle="normal"/>
+
+        <TextView
+            android:id="@+id/TV_AccFragment_DisplayPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Kata Sandi : * * * * * *"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            android:textStyle="normal"/>
+
+        <Button
+            android:id="@+id/BTN_AccFragment_SignOut"
+            android:layout_width="115dp"
+            android:layout_height="35dp"
+            android:text="Sign Out"
+            android:background="@drawable/rounded_button"/>
+    </LinearLayout>
+
+</RelativeLayout>

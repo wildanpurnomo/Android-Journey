@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6EAED"
+    tools:context=".pembuatan_sim_baru.pengisian_formulir.SudahIsiFormSIMBaruActivity">
+
+    <include
+        android:id="@+id/toolbarLayoutSudahIsiFormBaru"
+        layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarLayoutSudahIsiFormBaru"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:padding="21dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/centang"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Anda telah mengisi formulir pendaftaran. Silahkan melanjutkan tahapan pendaftaran."
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

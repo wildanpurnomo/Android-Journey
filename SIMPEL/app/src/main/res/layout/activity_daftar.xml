@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#20C456"
+    tools:context=".login_and_register.DaftarActivity">
+
+    <ImageView
+        android:id="@+id/logoApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:padding="15dp"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoApp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="31dp"
+        android:background="@drawable/rounded_layout"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="25dp">
+
+        <TextView
+            android:id="@+id/loginFormContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Lengkap"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_registerNamaLengkap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wildan Purnomo"
+            android:inputType="text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nomor KTP"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_registerNoKTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="333322221111"
+            android:inputType="number"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_registerUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="purnomowildan"
+            android:inputType="text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_registerEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="wildan@mail.com"
+            android:inputType="text"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="#20C456"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/ET_registerPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="password"
+            android:inputType="textPassword"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/BTN_registerButton"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:text="DAFTAR"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</RelativeLayout>

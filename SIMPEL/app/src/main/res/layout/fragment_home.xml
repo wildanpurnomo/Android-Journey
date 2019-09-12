@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/containerSIMBaruMenu"
+        android:layout_width="145dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="30dp"
+        android:background="#FFFFFF"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="30dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/gambarSIMBaru"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/buat_sim_baru" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gambarSIMBaru"
+                android:text="SIM Baru"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/containerPerpanjanganSIM"
+        android:layout_width="145dp"
+        android:layout_height="155dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/containerSIMBaruMenu"
+        android:layout_marginEnd="30dp"
+        android:background="#FFFFFF"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/gambarPerpanjanganSIM"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/perpanjangan_sim" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gambarPerpanjanganSIM"
+                android:text="Perpanjangan"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/containerPanduan"
+        android:layout_width="145dp"
+        android:layout_height="155dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/containerSIMBaruMenu"
+        android:layout_marginBottom="138dp"
+        android:background="#FFFFFF"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/gambarPanduan"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/panduan" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gambarPanduan"
+                android:text="Panduan"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/containerLatihanSoal"
+        android:layout_width="145dp"
+        android:layout_height="155dp"
+        android:layout_alignStart="@+id/containerPerpanjanganSIM"
+        android:layout_alignTop="@+id/containerPanduan"
+        android:background="#FFFFFF"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/gambarLatihanSoal"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/latihan_soal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gambarLatihanSoal"
+                android:text="Latihan Soal"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+</RelativeLayout>

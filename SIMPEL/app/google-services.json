@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "153091272493",
+    "firebase_url": "https://projectsimpel-f64bc.firebaseio.com",
+    "project_id": "projectsimpel-f64bc",
+    "storage_bucket": "projectsimpel-f64bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153091272493:android:dac952795f4b7fba",
+        "android_client_info": {
+          "package_name": "com.example.dzakiyh.simpel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "153091272493-lhica6eseb9oc6hsk3sjeno54rlepgvj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLk-8T7TWh7R6gH_XZ2kohJ9alrhOzg5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "153091272493-lhica6eseb9oc6hsk3sjeno54rlepgvj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

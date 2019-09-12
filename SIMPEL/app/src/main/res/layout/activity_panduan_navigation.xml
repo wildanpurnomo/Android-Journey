@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6EAED"
+    tools:context=".panduan.PanduanNavigationActivity">
+
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarLayout"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:padding="21dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginBottom="15dp"
+            android:text="Panduan"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorSimpel"/>
+
+        <TextView
+            android:id="@+id/TV_Panduan_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Tata cara Pembuatan SIM Baru"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            />
+
+        <TextView
+            android:id="@+id/TV_Panduan_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Tata cara perpanjangan SIM Lama"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            />
+
+        <TextView
+            android:id="@+id/TV_Panduan_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Cara Berkendara yang Baik dan Benar"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            />
+
+        <TextView
+            android:id="@+id/TV_Panduan_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Rambu Lalu Lintas"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            />
+
+        <TextView
+            android:id="@+id/TV_Panduan_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Keamanan Berkendara"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            />
+
+        <TextView
+            android:id="@+id/TV_Panduan_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Etika Berkendara"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            />
+
+        <TextView
+            android:id="@+id/TV_Panduan_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kelengkapan Berkendara"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#373435"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

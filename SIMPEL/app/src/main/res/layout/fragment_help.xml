@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6EAED"
+    tools:context=".fragments.HelpFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:padding="35dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Umum"
+            android:textSize="21sp"
+            android:textColor="#A1A1A1"
+            android:textStyle="bold"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Tentang Simpel"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="normal"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Cara memakai Panduan"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="normal"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Feedback"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="normal"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Updates"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="normal"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Tentang Kami"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="normal"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kontak Kami"
+            android:textSize="21sp"
+            android:textColor="@color/colorSimpel"
+            android:textStyle="normal"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

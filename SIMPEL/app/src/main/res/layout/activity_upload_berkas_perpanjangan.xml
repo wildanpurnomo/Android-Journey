@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6EAED"
+    tools:context=".perpanjangan_sim.kirim_berkas.UploadBerkasPerpanjanganActivity">
+
+    <include
+        android:id="@+id/toolbarLayoutUploadBerkas"
+        layout="@layout/toolbar_layout"/>
+
+    <LinearLayout
+        android:id="@+id/contUploadsMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarLayoutUploadBerkas"
+        android:layout_marginLeft="21dp"
+        android:layout_marginRight="21dp"
+        android:padding="15dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/Spinner_ListUploadPerpanjangan"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+
+            <Button
+                android:id="@+id/BTN_UploadPerpanj_ChooseFile"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Choose File"
+                android:background="@drawable/rounded_button"
+                android:layout_alignParentLeft="true" />
+
+            <Button
+                android:id="@+id/BTN_UploadPerpanj_UploadFile"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="Upload"
+                android:background="@drawable/rounded_button"/>
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/Progress_UploadPerpanj_uploadProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+        <TextView
+            android:id="@+id/TV_UploadPerpanj_hintKTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Anda belum mengunggah KTP"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/TV_UploadPerpanj_hintKK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Anda belum mengunggah KK"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/TV_UploadPerpanj_hintSKSehat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Anda belum mengunggah SK Sehat"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</RelativeLayout>
