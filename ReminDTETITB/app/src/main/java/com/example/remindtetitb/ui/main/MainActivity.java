@@ -1,7 +1,9 @@
-package com.example.remindtetitb;
+package com.example.remindtetitb.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.remindtetitb.R;
 
 public class MainActivity extends AppCompatActivity {
 

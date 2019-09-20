@@ -3,4 +3,26 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!--Onboarding Background Color-->
+    <color name="onboarding_bg_screen">#1C334B</color>
+
+    <!--Onboarding Dots Inactive Color-->
+    <color name="onboarding_dots_inactive">#C4C4C4</color>
+
+    <!--Onboarding Dots Active Color-->
+    <color name="onboarding_dots_active">#26C6DB</color>
+
+    <array name="array_active_dots">
+        <item>@color/onboarding_dots_active</item>
+        <item>@color/onboarding_dots_active</item>
+        <item>@color/onboarding_dots_active</item>
+    </array>
+
+    <array name="array_inactive_dots">
+        <item>@color/onboarding_dots_inactive</item>
+        <item>@color/onboarding_dots_inactive</item>
+        <item>@color/onboarding_dots_inactive</item>
+
+    </array>
 </resources>

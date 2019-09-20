@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ReminDTETITB</string>
+    <string name="onboarding_text_1">Aplikasi ini dapat mengingatkan anda tentang kuliah pengganti dan tambahan</string>
+    <string name="onboarding_text_2">Anda dapat melihat info akademik juga di aplikasi ini</string>
+    <string name="onboarding_text_3">Penasaran? Ayo mulai memakai aplikasi ini!</string>
+    <string name="onboarding_text_lewati">Lewati ></string>
 </resources>
