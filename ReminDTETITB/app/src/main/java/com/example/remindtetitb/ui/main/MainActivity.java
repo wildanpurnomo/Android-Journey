@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvInfoAkademik;
-    private InfoViewModel infoViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         final InfoAdapter infoAdapter = new InfoAdapter();
         infoAdapter.setContext(this);
 
-        infoViewModel = ViewModelProviders.of(this).get(InfoViewModel.class);
+        InfoViewModel infoViewModel = ViewModelProviders.of(this).get(InfoViewModel.class);
         infoViewModel.setListInfo();
 
         rvInfoAkademik = findViewById(R.id.rv_main_allinfo);
