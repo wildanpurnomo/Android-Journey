@@ -13,6 +13,9 @@
     <!--Main Akademik Filter-->
     <color name="main_akademik_filter">#3C6FA3</color>
 
+    <!--Filter Disabled-->
+    <color name="main_disabled_filter">#BF757575</color>
+
     <!--Onboarding Background Color-->
     <color name="onboarding_bg_screen">#1C334B</color>
 

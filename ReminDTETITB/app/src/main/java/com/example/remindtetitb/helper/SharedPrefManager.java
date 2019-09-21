@@ -11,6 +11,7 @@ public class SharedPrefManager {
     private static final String PREF_NAME = "remind-onboarding";
 
     private static final String IS_FIRST_LAUNCH = "is_first_launch";
+    private static final String FILTER_INFO = "filter_info";
 
     public SharedPrefManager(Context context) {
         this.context = context;
@@ -23,7 +24,16 @@ public class SharedPrefManager {
         editor.commit();
     }
 
+    public void setFilterInfo(String filterInfo){
+        editor.putString(FILTER_INFO, filterInfo);
+        editor.commit();
+    }
+
     public boolean isFirstLaunch(){
         return sharedPreferences.getBoolean(IS_FIRST_LAUNCH, true);
+    }
+
+    public String filterInfo(){
+        return sharedPreferences.getString(FILTER_INFO, "all");
     }
 }
