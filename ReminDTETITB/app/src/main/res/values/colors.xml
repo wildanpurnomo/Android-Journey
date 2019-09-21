@@ -4,6 +4,15 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <!--Main Background Color-->
+    <color name="main_bg">#ECF6F5</color>
+
+    <!--Main Kuliah filter-->
+    <color name="main_kuliah_filter">#D89531</color>
+    
+    <!--Main Akademik Filter-->
+    <color name="main_akademik_filter">#3C6FA3</color>
+
     <!--Onboarding Background Color-->
     <color name="onboarding_bg_screen">#1C334B</color>
 

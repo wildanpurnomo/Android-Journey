@@ -4,4 +4,6 @@
     <string name="onboarding_text_2">Anda dapat melihat info akademik juga di aplikasi ini</string>
     <string name="onboarding_text_3">Penasaran? Ayo mulai memakai aplikasi ini!</string>
     <string name="onboarding_text_lewati">Lewati ></string>
+    <string name="main_kuliah_filter">Kuliah</string>
+    <string name="main_akademik_filter">Akademik</string>
 </resources>
