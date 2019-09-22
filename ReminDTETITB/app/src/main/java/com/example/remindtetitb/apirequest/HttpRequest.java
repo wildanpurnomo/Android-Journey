@@ -11,4 +11,7 @@ import retrofit2.http.Url;
 public interface HttpRequest {
     @GET()
     Call<ArrayList<Info>> getInfoAkademik (@Url String url);
+
+    @GET()
+    Call<ArrayList<Info>> searchByQuery (@Url String url);
 }

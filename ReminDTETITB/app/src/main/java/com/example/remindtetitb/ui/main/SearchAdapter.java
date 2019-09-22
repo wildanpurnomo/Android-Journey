@@ -20,10 +20,10 @@ import com.example.remindtetitb.model.Info;
 
 import java.util.ArrayList;
 
-public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> implements Filterable {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> implements Filterable {
     private Context context;
-    private ArrayList<Info> defaultInfo = new ArrayList<>();
-    private ArrayList<Info> filteredListInfo = new ArrayList<>();
+    private ArrayList<Info> searchedInfo = new ArrayList<>();
+    private ArrayList<Info> filteredSearch = new ArrayList<>();
 
     public Context getContext() {
         return context;
@@ -33,31 +33,31 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
         this.context = context;
     }
 
-    public ArrayList<Info> getListInfo() {
-        return defaultInfo;
+    public ArrayList<Info> getSearchedInfo() {
+        return searchedInfo;
     }
 
-    public void setListInfo(ArrayList<Info> listInfo) {
-        this.defaultInfo = listInfo;
-        filteredListInfo = this.defaultInfo;
+    public void setSearchedInfo(ArrayList<Info> searchedInfo) {
+        this.searchedInfo = searchedInfo;
+        filteredSearch = this.searchedInfo;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public InfoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public SearchAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.info_placeholder, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InfoAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.bindTo(filteredListInfo.get(i));
+    public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder viewHolder, int i) {
+        viewHolder.bindTo(getSearchedInfo().get(i));
     }
 
     @Override
     public int getItemCount() {
-        return filteredListInfo.size();
+        return filteredSearch.size();
     }
 
     @Override
@@ -70,10 +70,10 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
 
                 switch (filter) {
                     case "all":
-                        helperFilter = getListInfo();
+                        helperFilter = getSearchedInfo();
                         break;
                     case "kuliah": {
-                        for (Info info : getListInfo()) {
+                        for (Info info : getSearchedInfo()) {
                             if (info.getLabel().equals("Perkuliahan")) {
                                 helperFilter.add(info);
                             }
@@ -81,7 +81,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
                         break;
                     }
                     case "akademik": {
-                        for (Info info : getListInfo()) {
+                        for (Info info : getSearchedInfo()) {
                             if (info.getLabel().equals("Akademik")) {
                                 helperFilter.add(info);
                             }
@@ -99,7 +99,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
             @SuppressWarnings("unchecked")
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                filteredListInfo = (ArrayList<Info>) results.values;
+                filteredSearch = (ArrayList<Info>) results.values;
                 notifyDataSetChanged();
             }
         };

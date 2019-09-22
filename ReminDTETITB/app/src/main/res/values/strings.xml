@@ -6,4 +6,5 @@
     <string name="onboarding_text_lewati">Lewati ></string>
     <string name="main_kuliah_filter">Kuliah</string>
     <string name="main_akademik_filter">Akademik</string>
+    <string name="search">search</string>
 </resources>
