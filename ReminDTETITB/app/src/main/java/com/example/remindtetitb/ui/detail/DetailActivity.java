@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.remindtetitb.R;
 import com.example.remindtetitb.alarm.AlarmReceiver;
@@ -80,19 +81,25 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.btn_detail_set_alarm:
+                String infoId = info.getId();
                 int notifId = info.getNumber();
                 String date = tvDetailDateAlarm.getText().toString();
                 String hour = tvDetailHourAlarm.getText().toString();
                 String title = tvDetailTitle.getText().toString();
                 String content = tvDetailContent.getText().toString();
-                sharedPrefManager.setAlarmSchedule(info.getId(), date + "_" + hour);
-                btnCancelAlarm.setEnabled(true);
 
-                alarmReceiver.setOneTimeAlarm(this, notifId, date, hour, title, content);
+                if(date.equals(getString(R.string.detail_alarm_set_default_text)) || hour.equals(getString(R.string.detail_alarm_set_default_text))) {
+                    Toast.makeText(this, "Jadwal belum diisi", Toast.LENGTH_SHORT).show();
+                } else{
+                    sharedPrefManager.setAlarmSchedule(info.getId(), date + "_" + hour);
+                    btnCancelAlarm.setEnabled(true);
+
+                    alarmReceiver.setOneTimeAlarm(this, infoId, notifId, date, hour, title, content);
+                }
                 break;
 
             case R.id.btn_detail_cancel_alarm:
-                alarmReceiver.cancelAlarm(this);
+                alarmReceiver.cancelAlarm(this, info.getNumber());
                 sharedPrefManager.deleteAlarmSchedule(info.getId());
                 btnCancelAlarm.setEnabled(false);
                 tvDetailDateAlarm.setText(getString(R.string.detail_alarm_set_default_text));
