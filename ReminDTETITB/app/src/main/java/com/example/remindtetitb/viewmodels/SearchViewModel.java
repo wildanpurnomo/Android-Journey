@@ -1,4 +1,4 @@
-package com.example.remindtetitb.ui.main;
+package com.example.remindtetitb.viewmodels;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
@@ -18,22 +18,23 @@ import retrofit2.Response;
 
 import static android.support.constraint.Constraints.TAG;
 
-public class InfoViewModel extends ViewModel {
-    private MutableLiveData<ArrayList<Info>> listInfo = new MutableLiveData<>();
-
+public class SearchViewModel extends ViewModel {
+    private MutableLiveData<ArrayList<Info>> searchResults = new MutableLiveData<>();
     private HttpRequest httpRequest = RetrofitClient.getRetrofitInstance().create(HttpRequest.class);
 
-    public LiveData<ArrayList<Info>> getListInfo() {
-        return listInfo;
+    public LiveData<ArrayList<Info>> getSearchResults() {
+        return searchResults;
     }
 
-    public void setListInfo() {
-        Call<ArrayList<Info>> callInfo = httpRequest.getInfoAkademik("/");
-        callInfo.enqueue(new Callback<ArrayList<Info>>() {
+    public void setSearchResults(String query) {
+        String searchEndPoint = "/title/" + query;
+
+        Call<ArrayList<Info>> callSearchResults = httpRequest.searchByQuery(searchEndPoint);
+        callSearchResults.enqueue(new Callback<ArrayList<Info>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<Info>> call, @NonNull Response<ArrayList<Info>> response) {
                 if (response.body() != null) {
-                    listInfo.postValue(response.body());
+                    searchResults.postValue(response.body());
                 }
             }
 

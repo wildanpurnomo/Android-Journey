@@ -1,4 +1,4 @@
-package com.example.remindtetitb.ui.main;
+package com.example.remindtetitb.ui.custom;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;

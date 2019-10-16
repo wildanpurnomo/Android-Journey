@@ -1,6 +1,7 @@
-package com.example.remindtetitb.ui.main;
+package com.example.remindtetitb.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -14,9 +15,9 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.remindtetitb.R;
 import com.example.remindtetitb.model.Info;
+import com.example.remindtetitb.ui.detail.DetailActivity;
 
 import java.util.ArrayList;
 
@@ -53,6 +54,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
     @Override
     public void onBindViewHolder(@NonNull InfoAdapter.ViewHolder viewHolder, int i) {
         viewHolder.bindTo(filteredListInfo.get(i));
+        viewHolder.setOnClickListener(i);
     }
 
     @Override
@@ -112,8 +114,6 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
         Resources resources = context.getResources();
         Drawable bgAkademik = ResourcesCompat.getDrawable(resources, R.drawable.bg_tag_akademik, null);
         Drawable bgKuliah = ResourcesCompat.getDrawable(resources, R.drawable.bg_tag_kuliah, null);
-        Drawable imgAdded = ResourcesCompat.getDrawable(resources, R.drawable.item_added, null);
-        Drawable imgNotAdded = ResourcesCompat.getDrawable(resources, R.drawable.item_not_added, null);
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -121,7 +121,6 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
             tvTitle = itemView.findViewById(R.id.tv_item_title);
             tvContent = itemView.findViewById(R.id.tv_item_description);
             tvLabel = itemView.findViewById(R.id.tv_item_infotag);
-            imgIndicator = itemView.findViewById(R.id.img_item_add_indicator);
         }
 
         public void bindTo(Info info){
@@ -134,8 +133,18 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
             } else if (info.getLabel().equals("Akademik")){
                 tvLabel.setBackground(bgAkademik);
             }
+        }
 
-            Glide.with(context).load(imgNotAdded).override(100, 100).into(imgIndicator);
+        public void setOnClickListener(final int i){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent toDetail = new Intent(getContext(), DetailActivity.class);
+                    toDetail.putExtra(DetailActivity.EXTRA_INFO, filteredListInfo.get(i));
+                    getContext().startActivity(toDetail);
+                }
+            });
+
         }
     }
 }

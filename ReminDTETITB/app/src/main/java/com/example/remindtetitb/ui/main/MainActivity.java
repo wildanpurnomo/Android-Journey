@@ -19,6 +19,11 @@ import android.widget.ProgressBar;
 import com.example.remindtetitb.R;
 import com.example.remindtetitb.helper.SharedPrefManager;
 import com.example.remindtetitb.model.Info;
+import com.example.remindtetitb.ui.adapter.InfoAdapter;
+import com.example.remindtetitb.ui.adapter.SearchAdapter;
+import com.example.remindtetitb.ui.custom.InfoDecoration;
+import com.example.remindtetitb.viewmodels.InfoViewModel;
+import com.example.remindtetitb.viewmodels.SearchViewModel;
 
 import java.util.ArrayList;
 
@@ -212,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onQueryTextSubmit(String s) {
         isSearching = true;
 
-        searchQuery = s.toLowerCase().trim().replaceAll("\\s", "");
+        searchQuery = s.toLowerCase().trim().replaceAll("\\s", "+");
         searchViewModel.setSearchResults(searchQuery);
         displayLoading(true);
         searchViewModel.getSearchResults().observe(this, new Observer<ArrayList<Info>>() {
@@ -248,4 +253,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+
 }

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true"
+    android:isScrollContainer="false"
+    tools:context=".ui.detail.DetailActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
+
+        <TextView
+            android:id="@+id/tv_detail_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="#1D1E1F"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Kuliah Piranti Pengolahan Isyarat Digital (SJK)" />
+
+        <TextView
+            android:id="@+id/tv_detail_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="#1D1E1F"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_detail_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_title"
+            tools:text="hari Selasa, 28 Mei 2019 TIDAK TERSELENGGARA, Diganti : Hari Rabu, 29 Mei 2019 Jam 10.00 wib Ruang TE 4 (PAU). Terima kasih." />
+
+        <TextView
+            android:id="@+id/tv_detail_add_alarm_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/detail_pasang_pengingat"
+            android:textColor="#1D1E1F"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_content" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_detail_alarm_date"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/icon_date_alarm"
+            android:src="@drawable/ic_date_range_black_24dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_add_alarm_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_add_alarm_label" />
+
+        <TextView
+            android:id="@+id/tv_detail_alarm_date_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/detail_alarm_set_default_text"
+            android:textColor="#1D1E1F"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgbtn_detail_alarm_date"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_detail_alarm_date"
+            app:layout_constraintTop_toTopOf="@+id/imgbtn_detail_alarm_date" />
+
+        <ImageButton
+            android:id="@+id/imgbtn_detail_alarm_hour"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/icon_date_alarm"
+            android:src="@drawable/ic_access_time_black_24dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_add_alarm_label"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_detail_alarm_date" />
+
+        <TextView
+            android:id="@+id/tv_detail_alarm_hour_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/detail_alarm_set_default_text"
+            android:textColor="#1D1E1F"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgbtn_detail_alarm_hour"
+            app:layout_constraintStart_toEndOf="@+id/imgbtn_detail_alarm_hour"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_detail_alarm_date" />
+
+        <Button
+            android:id="@+id/btn_detail_cancel_alarm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/batalkan_alarm"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_title"
+            app:layout_constraintTop_toBottomOf="@+id/imgbtn_detail_alarm_hour" />
+
+        <Button
+            android:id="@+id/btn_detail_set_alarm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/pasang_alarm"
+            app:layout_constraintEnd_toEndOf="@+id/tv_detail_title"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/btn_detail_cancel_alarm" />
+
+        <Button
+            android:id="@+id/btn_detail_kategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_title"
+            app:layout_constraintTop_toBottomOf="@+id/btn_detail_cancel_alarm"
+            app:layout_constraintVertical_bias="1.0"
+            tools:background="@drawable/bg_tag_kuliah"
+            tools:text="@string/main_kuliah_filter" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+</ScrollView>

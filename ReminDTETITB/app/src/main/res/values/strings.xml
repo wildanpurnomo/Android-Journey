@@ -7,4 +7,9 @@
     <string name="main_kuliah_filter">Kuliah</string>
     <string name="main_akademik_filter">Akademik</string>
     <string name="search">search</string>
+    <string name="detail_pasang_pengingat">Pasang Pengingat</string>
+    <string name="icon_date_alarm">icon_date_alarm</string>
+    <string name="detail_alarm_set_default_text">belum ada jadwal</string>
+    <string name="batalkan_alarm">Batalkan Alarm</string>
+    <string name="pasang_alarm">Pasang Alarm</string>
 </resources>

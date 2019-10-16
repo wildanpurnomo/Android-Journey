@@ -37,28 +37,15 @@
         android:id="@+id/tv_item_infotag"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_tag_akademik"
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_item_add_indicator"
-        app:layout_constraintEnd_toStartOf="@+id/img_item_add_indicator"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_item_add_indicator"
+        app:layout_constraintStart_toStartOf="@+id/tv_item_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_description"
         tools:text="Akademik" />
 
-    <ImageView
-        android:id="@+id/img_item_add_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_description"
-        tools:src="@drawable/item_not_added" />
+
 
 </android.support.constraint.ConstraintLayout>

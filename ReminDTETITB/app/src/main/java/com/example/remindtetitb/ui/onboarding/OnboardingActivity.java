@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +19,9 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.remindtetitb.ui.main.MainActivity;
 import com.example.remindtetitb.R;
 import com.example.remindtetitb.helper.SharedPrefManager;
+import com.example.remindtetitb.ui.main.MainActivity;
 
 public class OnboardingActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -67,7 +67,7 @@ public class OnboardingActivity extends AppCompatActivity {
         tvLewati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int currentSlide = getItem(+1);
+                int currentSlide = getItem();
                 if(currentSlide < slides.length){
                     viewPager.setCurrentItem(currentSlide);
                 } else{
@@ -97,8 +97,8 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     }
 
-    private int getItem(int i){
-        return viewPager.getCurrentItem() + i;
+    private int getItem(){
+        return viewPager.getCurrentItem() + 1;
     }
 
     private void launchMainActivity(){
@@ -109,7 +109,7 @@ public class OnboardingActivity extends AppCompatActivity {
         finish();
     }
 
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+    final ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i1) {
 
@@ -134,10 +134,7 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     }
 
-
-
     public class ViewPagerAdapter extends PagerAdapter{
-        private LayoutInflater layoutInflater;
 
         public ViewPagerAdapter() {
         }
@@ -145,7 +142,7 @@ public class OnboardingActivity extends AppCompatActivity {
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = layoutInflater.inflate(slides[position], container, false);
             container.addView(view);
             return view;
