@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -22,6 +21,7 @@ import com.example.remindtetitb.model.Info;
 import com.example.remindtetitb.ui.adapter.InfoAdapter;
 import com.example.remindtetitb.ui.adapter.SearchAdapter;
 import com.example.remindtetitb.ui.custom.InfoDecoration;
+import com.example.remindtetitb.ui.custom.StatefulRecyclerView;
 import com.example.remindtetitb.viewmodels.InfoViewModel;
 import com.example.remindtetitb.viewmodels.SearchViewModel;
 
@@ -36,14 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPrefManager sharedPrefManager;
     private SearchViewModel searchViewModel;
 
-    private RecyclerView rvInfoAkademik, rvSearchedInfo;
+    private StatefulRecyclerView rvInfoAkademik, rvSearchedInfo;
     private ProgressBar pbLoading;
     private InfoAdapter infoAdapter = new InfoAdapter();
     private SearchAdapter searchAdapter = new SearchAdapter();
     private Button btnFilterKuliah, btnFilterAkademik;
     private SearchView searchView;
-
-    private Bundle bundleSaveScrollState;
 
     private MenuItem itemSearch;
 
@@ -137,11 +135,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putParcelableArrayList(SAVED_SEARCH, searchAdapter.getSearchedInfo());
         outState.putString(SAVED_QUERY, searchQuery);
         outState.putBoolean(SAVED_STATE, isSearching);
-
-        LinearLayoutManager manager = (LinearLayoutManager) rvInfoAkademik.getLayoutManager();
-        if (manager != null) {
-            outState.putInt("test", manager.findFirstCompletelyVisibleItemPosition());
-        }
     }
 
     @Override

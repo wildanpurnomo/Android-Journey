@@ -96,7 +96,7 @@
 <!--    </android.support.v4.widget.SwipeRefreshLayout>-->
 
 
-    <android.support.v7.widget.RecyclerView
+    <com.example.remindtetitb.ui.custom.StatefulRecyclerView
         android:id="@+id/rv_main_allinfo"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -109,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view_main_line"
         tools:listitem="@layout/info_placeholder" />
 
-    <android.support.v7.widget.RecyclerView
+    <com.example.remindtetitb.ui.custom.StatefulRecyclerView
         android:id="@+id/rv_main_search"
         android:layout_width="0dp"
         android:layout_height="0dp"
