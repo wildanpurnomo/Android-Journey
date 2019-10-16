@@ -47,6 +47,4 @@ public class SharedPrefManager {
     public String getAlarmSchedule(String infoID){
         return sharedPreferences.getString(infoID, null);
     }
-
-
 }

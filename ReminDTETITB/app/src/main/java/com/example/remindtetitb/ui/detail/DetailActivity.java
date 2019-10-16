@@ -21,8 +21,11 @@ import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener, DatePickerFragment.DialogDateListener, TimePickerFragment.DialogTimeListener {
     public static final String EXTRA_INFO = "extra_info";
+    private static final String STATE_DATE = "StateDate";
+    private static final String STATE_HOUR = "StateHour";
 
-    private TextView tvDetailTitle, tvDetailContent, tvDetailDateAlarm, tvDetailHourAlarm;
+    private TextView tvDetailDateAlarm;
+    private TextView tvDetailHourAlarm;
     private Button btnCancelAlarm;
     private AlarmReceiver alarmReceiver;
     private Info info = new Info();
@@ -34,8 +37,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        tvDetailTitle = findViewById(R.id.tv_detail_title);
-        tvDetailContent = findViewById(R.id.tv_detail_content);
+        TextView tvDetailTitle = findViewById(R.id.tv_detail_title);
+        TextView tvDetailContent = findViewById(R.id.tv_detail_content);
         tvDetailDateAlarm = findViewById(R.id.tv_detail_alarm_date_label);
         tvDetailHourAlarm = findViewById(R.id.tv_detail_alarm_hour_label);
         ImageButton imgBtnDateAlarm = findViewById(R.id.imgbtn_detail_alarm_date);
@@ -56,6 +59,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnDetailLabel.setBackground(getDrawable(info.getLabel().equals("Perkuliahan") ? R.drawable.bg_tag_kuliah : R.drawable.bg_tag_akademik));
         btnDetailLabel.setText(info.getLabel().equals("Perkuliahan") ? "Kuliah" : "Akademik");
 
+        if (savedInstanceState != null) {
+            tvDetailDateAlarm.setText(savedInstanceState.getString(STATE_DATE));
+            tvDetailHourAlarm.setText(savedInstanceState.getString(STATE_HOUR));
+        }
+
         if (sharedPrefManager.getAlarmSchedule(info.getId()) != null) {
             String datetime = sharedPrefManager.getAlarmSchedule(info.getId());
             String[] splitter = datetime.split("_");
@@ -63,6 +71,13 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             tvDetailHourAlarm.setText(splitter[1]);
             btnCancelAlarm.setEnabled(true);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString(STATE_DATE, tvDetailDateAlarm.getText().toString());
+        outState.putString(STATE_HOUR, tvDetailHourAlarm.getText().toString());
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -81,12 +96,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.btn_detail_set_alarm:
-                String infoId = info.getId();
-                int notifId = info.getNumber();
                 String date = tvDetailDateAlarm.getText().toString();
                 String hour = tvDetailHourAlarm.getText().toString();
-                String title = tvDetailTitle.getText().toString();
-                String content = tvDetailContent.getText().toString();
 
                 if(date.equals(getString(R.string.detail_alarm_set_default_text)) || hour.equals(getString(R.string.detail_alarm_set_default_text))) {
                     Toast.makeText(this, "Jadwal belum diisi", Toast.LENGTH_SHORT).show();
@@ -94,7 +105,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     sharedPrefManager.setAlarmSchedule(info.getId(), date + "_" + hour);
                     btnCancelAlarm.setEnabled(true);
 
-                    alarmReceiver.setOneTimeAlarm(this, infoId, notifId, date, hour, title, content);
+                    alarmReceiver.setOneTimeAlarm(this, info, date, hour);
                 }
                 break;
 

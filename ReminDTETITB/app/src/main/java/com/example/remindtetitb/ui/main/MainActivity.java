@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnFilterKuliah, btnFilterAkademik;
     private SearchView searchView;
 
+    private Bundle bundleSaveScrollState;
+
     private MenuItem itemSearch;
 
     private boolean isSearching;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         sharedPrefManager = new SharedPrefManager(this);
+        InfoViewModel infoViewModel = ViewModelProviders.of(this).get(InfoViewModel.class);
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel.class);
         infoAdapter.setContext(this);
         searchAdapter.setContext(this);
@@ -92,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rvInfoAkademik = findViewById(R.id.rv_main_allinfo);
         rvInfoAkademik.setLayoutManager(new LinearLayoutManager(this));
         rvInfoAkademik.addItemDecoration(new InfoDecoration(getResources().getDimensionPixelSize(R.dimen.list_spacing)));
+        rvInfoAkademik.scrollToPosition(savedInstanceState == null ? 0 : savedInstanceState.getInt("text"));
 
         rvSearchedInfo = findViewById(R.id.rv_main_search);
         rvSearchedInfo.setLayoutManager(new LinearLayoutManager(this));
@@ -111,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btnFilterKuliah.setBackground(getResources().getDrawable(R.drawable.bg_tag_disabled, null));
         }
 
-        InfoViewModel infoViewModel = ViewModelProviders.of(this).get(InfoViewModel.class);
         infoViewModel.setListInfo();
         displayLoading(true);
         infoViewModel.getListInfo().observe(this, new Observer<ArrayList<Info>>() {
@@ -134,6 +137,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putParcelableArrayList(SAVED_SEARCH, searchAdapter.getSearchedInfo());
         outState.putString(SAVED_QUERY, searchQuery);
         outState.putBoolean(SAVED_STATE, isSearching);
+
+        LinearLayoutManager manager = (LinearLayoutManager) rvInfoAkademik.getLayoutManager();
+        if (manager != null) {
+            outState.putInt("test", manager.findFirstCompletelyVisibleItemPosition());
+        }
     }
 
     @Override
