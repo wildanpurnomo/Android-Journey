@@ -14,7 +14,7 @@ public class Info implements Parcelable {
 
     @SerializedName("number")
     @Expose
-    private long number;
+    private int number;
 
     @SerializedName("label")
     @Expose
@@ -36,11 +36,11 @@ public class Info implements Parcelable {
         return id;
     }
 
-    public long getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(long number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -84,7 +84,7 @@ public class Info implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.id);
-        dest.writeLong(this.number);
+        dest.writeInt(this.number);
         dest.writeString(this.label);
         dest.writeString(this.title);
         dest.writeString(this.content);
@@ -96,7 +96,7 @@ public class Info implements Parcelable {
 
     protected Info(Parcel in) {
         this.id = in.readString();
-        this.number = in.readLong();
+        this.number = in.readInt();
         this.label = in.readString();
         this.title = in.readString();
         this.content = in.readString();

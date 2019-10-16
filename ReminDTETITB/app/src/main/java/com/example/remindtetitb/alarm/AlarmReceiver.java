@@ -23,31 +23,30 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class AlarmReceiver extends BroadcastReceiver {
-    public static final String TYPE_ONE_TIME = "OneTimeAlarm";
-    public static final String EXTRA_MESSAGE = "ExtraMessage";
+    private static final String EXTRA_NOTIF_ID = "ExtraNotifID";
+    private static final String EXTRA_TITLE = "ExtraTitle";
+    private static final String EXTRA_CONTENT = "ExtraContent";
 
-    private final int ID_ONE_TIME = 100;
+    private static final int ID_ONE_TIME = 100;
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String message = intent.getStringExtra(EXTRA_MESSAGE);
-        showToast(context, message);
+        int notifId = intent.getIntExtra(EXTRA_NOTIF_ID, 0);
+        String title = intent.getStringExtra(EXTRA_TITLE);
+        String content = intent.getStringExtra(EXTRA_CONTENT);
+        showAlarmNotification(context, notifId, title, content);
     }
 
-    private void showToast(Context context, String message){
-        Toast.makeText(context, "Pengingat" + " : " + message , Toast.LENGTH_SHORT).show();
-    }
-
-    private void showAlarmNotification(Context context, String title, String message, int notifid){
-        String CHANNEL_ID = "Channel_1";
+    private void showAlarmNotification(Context context, int notifId, String title, String content){
+        String CHANNEL_ID = "Channel_" + notifId;
         String CHANNEL_NAME = "AlarmManager channel";
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_access_time_black_24dp)
+                .setSmallIcon(R.drawable.logo_onboarding)
                 .setContentTitle(title)
-                .setContentText(message)
+                .setContentText(content)
                 .setColor(ContextCompat.getColor(context, android.R.color.transparent))
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(alarmSound);
@@ -67,19 +66,21 @@ public class AlarmReceiver extends BroadcastReceiver {
         Notification notification = builder.build();
 
         if (notificationManager != null) {
-            notificationManager.notify(notifid, notification);
+            notificationManager.notify(notifId, notification);
         }
 
     }
 
-    public void setOneTimeAlarm(Context context, String date, String time, String message){
+    public void setOneTimeAlarm(Context context, int notifId, String date, String time, String title, String content){
         String DATE_FORMAT = "yyyy-MM-dd";
         String TIME_FORMAT = "HH:mm";
         if(isDateInvalid(date, DATE_FORMAT) || isDateInvalid(time, TIME_FORMAT)) return;
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
-        intent.putExtra(EXTRA_MESSAGE, message);
+        intent.putExtra(EXTRA_NOTIF_ID, notifId);
+        intent.putExtra(EXTRA_TITLE, title);
+        intent.putExtra(EXTRA_CONTENT, content);
 
         String[] dateArray = date.split("-");
         String[] timeArray = time.split(":");
@@ -98,6 +99,19 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
 
         Toast.makeText(context, "Pengingat dipasang", Toast.LENGTH_SHORT).show();
+    }
+
+    public void cancelAlarm(Context context){
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, ID_ONE_TIME, intent, 0);
+        pendingIntent.cancel();
+
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+        }
+
+        Toast.makeText(context, "Pengingat dibatalkan", Toast.LENGTH_SHORT).show();
     }
 
     public boolean isDateInvalid(String date, String format){
