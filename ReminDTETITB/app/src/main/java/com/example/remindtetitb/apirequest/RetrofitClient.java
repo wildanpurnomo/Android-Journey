@@ -13,7 +13,7 @@ public class RetrofitClient {
     public static Retrofit getRetrofitInstance(){
         if (retrofit == null) {
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .connectTimeout(1, TimeUnit.MINUTES)
                     .readTimeout(30, TimeUnit.SECONDS)
                     .build();
 

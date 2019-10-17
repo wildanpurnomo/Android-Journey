@@ -1,21 +1,23 @@
 package com.example.remindtetitb.ui.main;
 
 import android.app.SearchManager;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.remindtetitb.R;
 import com.example.remindtetitb.helper.SharedPrefManager;
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MenuItem itemSearch;
 
     private ArrayList<Info> defaultInfo = new ArrayList<>();
-    private boolean isSearching;
+    private boolean isSearching, isConnectedInternet;
     private String searchQuery;
 
     @Override
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rvInfoAkademik = findViewById(R.id.rv_main_allinfo);
         rvInfoAkademik.setLayoutManager(new LinearLayoutManager(this));
         rvInfoAkademik.addItemDecoration(new InfoDecoration(getResources().getDimensionPixelSize(R.dimen.list_spacing)));
+        rvInfoAkademik.setAdapter(infoAdapter);
 
         btnFilterKuliah = findViewById(R.id.btn_main_kuliah_filter);
         btnFilterKuliah.setOnClickListener(this);
@@ -89,20 +92,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btnFilterKuliah.setBackground(getResources().getDrawable(R.drawable.bg_tag_disabled, null));
         }
 
+        final TextView tvSwipeHint = findViewById(R.id.tv_main_swipe_hint);
+
         infoViewModel.setListInfo();
         displayLoading(true);
         infoViewModel.getListInfo().observe(this, new Observer<ArrayList<Info>>() {
             @Override
             public void onChanged(@Nullable ArrayList<Info> infos) {
-                defaultInfo = infos;
-                infoAdapter.setListInfo(infos);
-                infoAdapter.getFilter().filter(sharedPrefManager.filterInfo());
-                rvInfoAkademik.setAdapter(infoAdapter);
+                if (infos != null) {
+                    isConnectedInternet = true;
+                    defaultInfo = infos;
+                    infoAdapter.setListInfo(infos);
+                    infoAdapter.getFilter().filter(sharedPrefManager.filterInfo());
+                    tvSwipeHint.setVisibility(View.GONE);
+                } else{
+                    isConnectedInternet = false;
+                    tvSwipeHint.setVisibility(View.VISIBLE);
+                }
 
                 displayLoading(false);
             }
         });
 
+        searchViewModel.getSearchResults().observe(this, new Observer<ArrayList<Info>>() {
+            @Override
+            public void onChanged(ArrayList<Info> infos) {
+                if (infos != null) {
+                    isConnectedInternet = true;
+                    infoAdapter.setListInfo(infos);
+                    infoAdapter.getFilter().filter(sharedPrefManager.filterInfo());
+                    tvSwipeHint.setVisibility(View.GONE);
+                } else{
+                    isConnectedInternet = false;
+                    tvSwipeHint.setVisibility(View.VISIBLE);
+                }
+
+                displayLoading(false);
+            }
+        });
     }
 
     @Override
@@ -175,7 +202,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             infoAdapter.setListInfo(defaultInfo);
             infoAdapter.getFilter().filter(sharedPrefManager.filterInfo());
 
-            searchViewModel.getSearchResults().removeObservers(this);
             searchQuery = "";
         }
         searchView.clearFocus();
@@ -189,15 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         searchQuery = s.toLowerCase().trim().replaceAll("\\s", "+");
         searchViewModel.setSearchResults(searchQuery);
         displayLoading(true);
-        searchViewModel.getSearchResults().observe(this, new Observer<ArrayList<Info>>() {
-            @Override
-            public void onChanged(@Nullable ArrayList<Info> infos) {
-                infoAdapter.setListInfo(infos);
-                infoAdapter.getFilter().filter(sharedPrefManager.filterInfo());
 
-                displayLoading(false);
-            }
-        });
         return true;
     }
 
@@ -222,7 +240,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else{
             pbLoading.setVisibility(View.GONE);
             refreshLayout.setRefreshing(false);
-            rvInfoAkademik.setVisibility(View.VISIBLE);
+            if(isConnectedInternet){
+                rvInfoAkademik.setVisibility(View.VISIBLE);
+            } else{
+                rvInfoAkademik.setVisibility(View.GONE);
+            }
         }
     }
 }

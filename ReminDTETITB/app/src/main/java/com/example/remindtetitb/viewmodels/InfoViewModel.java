@@ -1,18 +1,19 @@
 package com.example.remindtetitb.viewmodels;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
+import com.example.remindtetitb.apirequest.APIHelper;
 import com.example.remindtetitb.apirequest.HttpRequest;
 import com.example.remindtetitb.apirequest.RetrofitClient;
 import com.example.remindtetitb.model.Info;
-import com.example.remindtetitb.apirequest.CallbackWithRetry;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InfoViewModel extends ViewModel {
@@ -26,13 +27,26 @@ public class InfoViewModel extends ViewModel {
 
     public void setListInfo() {
         Call<ArrayList<Info>> callInfo = httpRequest.getInfoAkademik("/");
-        callInfo.enqueue(new CallbackWithRetry<ArrayList<Info>>(callInfo) {
+        APIHelper.enqueueWithRetry(callInfo, new Callback<ArrayList<Info>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<Info>> call, @NonNull Response<ArrayList<Info>> response) {
                 if (response.body() != null) {
                     listInfo.postValue(response.body());
                 }
             }
+
+            @Override
+            public void onFailure(@NonNull Call<ArrayList<Info>> call, @NonNull Throwable t) {
+                listInfo.postValue(null);
+            }
         });
+//        callInfo.enqueue(new CallbackWithRetry<ArrayList<Info>>(callInfo) {
+//            @Override
+//            public void onResponse(@NonNull Call<ArrayList<Info>> call, @NonNull Response<ArrayList<Info>> response) {
+//                if (response.body() != null) {
+//                    listInfo.postValue(response.body());
+//                }
+//            }
+//        });
     }
 }

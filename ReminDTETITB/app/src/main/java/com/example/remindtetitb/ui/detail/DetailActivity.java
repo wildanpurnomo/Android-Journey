@@ -1,23 +1,30 @@
 package com.example.remindtetitb.ui.detail;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
 import com.example.remindtetitb.R;
-import com.example.remindtetitb.alarm.AlarmReceiver;
+import com.example.remindtetitb.alarm.AlarmWorker;
 import com.example.remindtetitb.helper.SharedPrefManager;
 import com.example.remindtetitb.model.Info;
 import com.example.remindtetitb.ui.fragments.DatePickerFragment;
 import com.example.remindtetitb.ui.fragments.TimePickerFragment;
+import com.example.remindtetitb.utils.ParcelableUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener, DatePickerFragment.DialogDateListener, TimePickerFragment.DialogTimeListener {
     public static final String EXTRA_INFO = "extra_info";
@@ -25,7 +32,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tvDetailDateAlarm;
     private TextView tvDetailHourAlarm;
     private Button btnCancelAlarm;
-    private AlarmReceiver alarmReceiver;
     private Info info = new Info();
 
     private SharedPrefManager sharedPrefManager;
@@ -48,7 +54,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnCancelAlarm = findViewById(R.id.btn_detail_cancel_alarm);
         btnCancelAlarm.setOnClickListener(this);
         Button btnDetailLabel = findViewById(R.id.btn_detail_kategori);
-        alarmReceiver = new AlarmReceiver();
         sharedPrefManager = new SharedPrefManager(this);
 
         info = getIntent().getParcelableExtra(EXTRA_INFO);
@@ -91,12 +96,40 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     sharedPrefManager.setAlarmSchedule(info.getId(), date + "_" + hour);
                     btnCancelAlarm.setEnabled(true);
 
-                    alarmReceiver.setOneTimeAlarm(this, info, date, hour);
+                    String[] dateArray = date.split("-");
+                    String[] timeArray = hour.split(":");
+
+                    Calendar dueTime = Calendar.getInstance();
+                    dueTime.set(Calendar.YEAR, Integer.parseInt(dateArray[0]));
+                    dueTime.set(Calendar.MONTH, Integer.parseInt(dateArray[1]) - 1);
+                    dueTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateArray[2]));
+                    dueTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]));
+                    dueTime.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]));
+                    dueTime.set(Calendar.SECOND, 0);
+
+                    Calendar currentTIme = Calendar.getInstance();
+                    long timeDiff = dueTime.getTimeInMillis() - currentTIme.getTimeInMillis();
+
+                    Constraints constraints = new Constraints.Builder()
+                            .build();
+
+                    Data.Builder builder = new Data.Builder();
+                    byte[] bytifiedInfo = ParcelableUtil.marshall(info);
+                    builder.putByteArray(AlarmWorker.BYTES, bytifiedInfo);
+                    Data data = builder.build();
+
+                    OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(AlarmWorker.class)
+                            .setInputData(data)
+                            .setConstraints(constraints)
+                            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+                            .build();
+
+                    WorkManager.getInstance(this).enqueue(workRequest);
+                    Toast.makeText(this, "Pengingat dipasang", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case R.id.btn_detail_cancel_alarm:
-                alarmReceiver.cancelAlarm(this, info.getNumber());
                 sharedPrefManager.deleteAlarmSchedule(info.getId());
                 btnCancelAlarm.setEnabled(false);
                 tvDetailDateAlarm.setText(getString(R.string.detail_alarm_set_default_text));
