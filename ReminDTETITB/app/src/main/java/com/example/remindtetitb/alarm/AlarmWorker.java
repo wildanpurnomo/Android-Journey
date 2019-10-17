@@ -43,7 +43,7 @@ public class AlarmWorker extends Worker {
         return Result.success();
     }
 
-    private void showAlarmNotification(Context context, Info info){
+    private void showAlarmNotification(Context context, Info info) {
         String CHANNEL_ID = "Channel_1";
         String CHANNEL_NAME = "AlarmManager channel";
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
@@ -66,7 +66,7 @@ public class AlarmWorker extends Worker {
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(alarmSound);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
             channel.enableVibration(true);
             channel.setVibrationPattern(new long[]{1000, 1000, 1000, 1000, 1000});

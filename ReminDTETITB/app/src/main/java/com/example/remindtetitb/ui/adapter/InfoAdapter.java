@@ -126,19 +126,19 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
             tvLabel = itemView.findViewById(R.id.tv_item_infotag);
         }
 
-        public void bindTo(Info info){
+        public void bindTo(Info info) {
             tvTitle.setText(info.getTitle());
             tvContent.setText(info.getContent());
 
             tvLabel.setText(info.getLabel());
-            if(info.getLabel().equals("Perkuliahan")){
+            if (info.getLabel().equals("Perkuliahan")) {
                 tvLabel.setBackground(bgKuliah);
-            } else if (info.getLabel().equals("Akademik")){
+            } else if (info.getLabel().equals("Akademik")) {
                 tvLabel.setBackground(bgAkademik);
             }
         }
 
-        public void setOnClickListener(final int i){
+        public void setOnClickListener(final int i) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

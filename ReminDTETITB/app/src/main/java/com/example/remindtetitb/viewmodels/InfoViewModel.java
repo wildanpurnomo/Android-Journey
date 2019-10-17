@@ -40,13 +40,5 @@ public class InfoViewModel extends ViewModel {
                 listInfo.postValue(null);
             }
         });
-//        callInfo.enqueue(new CallbackWithRetry<ArrayList<Info>>(callInfo) {
-//            @Override
-//            public void onResponse(@NonNull Call<ArrayList<Info>> call, @NonNull Response<ArrayList<Info>> response) {
-//                if (response.body() != null) {
-//                    listInfo.postValue(response.body());
-//                }
-//            }
-//        });
     }
 }

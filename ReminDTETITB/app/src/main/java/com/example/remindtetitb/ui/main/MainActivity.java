@@ -86,9 +86,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnFilterAkademik = findViewById(R.id.btn_main_akademik_filter);
         btnFilterAkademik.setOnClickListener(this);
 
-        if(sharedPrefManager.filterInfo().equals("kuliah")){
+        if (sharedPrefManager.filterInfo().equals("kuliah")) {
             btnFilterAkademik.setBackground(getResources().getDrawable(R.drawable.bg_tag_disabled, null));
-        } else if(sharedPrefManager.filterInfo().equals("akademik")){
+        } else if (sharedPrefManager.filterInfo().equals("akademik")) {
             btnFilterKuliah.setBackground(getResources().getDrawable(R.drawable.bg_tag_disabled, null));
         }
 
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     infoAdapter.setListInfo(infos);
                     infoAdapter.getFilter().filter(sharedPrefManager.filterInfo());
                     tvSwipeHint.setVisibility(View.GONE);
-                } else{
+                } else {
                     isConnectedInternet = false;
                     tvSwipeHint.setVisibility(View.VISIBLE);
                 }
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     infoAdapter.setListInfo(infos);
                     infoAdapter.getFilter().filter(sharedPrefManager.filterInfo());
                     tvSwipeHint.setVisibility(View.GONE);
-                } else{
+                } else {
                     isConnectedInternet = false;
                     tvSwipeHint.setVisibility(View.VISIBLE);
                 }
@@ -134,50 +134,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_main_kuliah_filter:
-                if(sharedPrefManager.filterInfo().equals("all")){
+                if (sharedPrefManager.filterInfo().equals("all")) {
                     // Mode: Akademik
                     sharedPrefManager.setFilterInfo("akademik");
                     btnFilterKuliah.setBackground(getResources().getDrawable(R.drawable.bg_tag_disabled, null));
 
                     infoAdapter.getFilter().filter("akademik");
 
-                    if(isSearching){
+                    if (isSearching) {
                         infoAdapter.getFilter().filter("akademik");
                     }
-                } else if(sharedPrefManager.filterInfo().equals("akademik")){
+                } else if (sharedPrefManager.filterInfo().equals("akademik")) {
                     // Mode: Akademik + Kuliah
                     sharedPrefManager.setFilterInfo("all");
                     btnFilterKuliah.setBackground(getResources().getDrawable(R.drawable.bg_tag_kuliah, null));
 
                     infoAdapter.getFilter().filter("all");
 
-                    if(isSearching){
+                    if (isSearching) {
                         infoAdapter.getFilter().filter("all");
                     }
                 }
                 break;
 
             case R.id.btn_main_akademik_filter:
-                if(sharedPrefManager.filterInfo().equals("all")){
+                if (sharedPrefManager.filterInfo().equals("all")) {
                     // Mode: Kuliah
                     sharedPrefManager.setFilterInfo("kuliah");
                     btnFilterAkademik.setBackground(getResources().getDrawable(R.drawable.bg_tag_disabled, null));
 
                     infoAdapter.getFilter().filter("kuliah");
 
-                    if(isSearching){
+                    if (isSearching) {
                         infoAdapter.getFilter().filter("kuliah");
                     }
-                } else if(sharedPrefManager.filterInfo().equals("kuliah")){
+                } else if (sharedPrefManager.filterInfo().equals("kuliah")) {
                     // Mode: Kuliah + Akademik
                     sharedPrefManager.setFilterInfo("all");
                     btnFilterAkademik.setBackground(getResources().getDrawable(R.drawable.bg_tag_akademik, null));
 
                     infoAdapter.getFilter().filter("all");
 
-                    if(isSearching){
+                    if (isSearching) {
                         infoAdapter.getFilter().filter("all");
                     }
                 }
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onMenuItemActionCollapse(MenuItem item) {
-        if(isSearching){
+        if (isSearching) {
             isSearching = false;
 
             infoAdapter.setListInfo(defaultInfo);
@@ -226,23 +226,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onRefresh() {
-        if(isSearching){
+        if (isSearching) {
             searchViewModel.setSearchResults(searchQuery);
-        } else{
+        } else {
             infoViewModel.setListInfo();
         }
     }
 
-    private void displayLoading(boolean isLoading){
+    private void displayLoading(boolean isLoading) {
         if (isLoading) {
             pbLoading.setVisibility(View.VISIBLE);
             rvInfoAkademik.setVisibility(View.GONE);
-        } else{
+        } else {
             pbLoading.setVisibility(View.GONE);
             refreshLayout.setRefreshing(false);
-            if(isConnectedInternet){
+            if (isConnectedInternet) {
                 rvInfoAkademik.setVisibility(View.VISIBLE);
-            } else{
+            } else {
                 rvInfoAkademik.setVisibility(View.GONE);
             }
         }

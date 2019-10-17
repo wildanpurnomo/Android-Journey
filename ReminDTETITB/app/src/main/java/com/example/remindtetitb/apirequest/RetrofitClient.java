@@ -10,7 +10,7 @@ public class RetrofitClient {
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://remindtetitb.herokuapp.com";
 
-    public static Retrofit getRetrofitInstance(){
+    public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .connectTimeout(1, TimeUnit.MINUTES)

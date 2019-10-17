@@ -35,12 +35,12 @@ public class OnboardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         sharedPrefManager = new SharedPrefManager(this);
-        if(!sharedPrefManager.isFirstLaunch()){
+        if (!sharedPrefManager.isFirstLaunch()) {
             launchMainActivity();
             finish();
         }
 
-        if(Build.VERSION.SDK_INT >= 21){
+        if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
@@ -69,23 +69,23 @@ public class OnboardingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int currentSlide = getItem();
-                if(currentSlide < slides.length){
-                    viewPager.setCurrentItem(currentSlide);
-                } else{
+                if (currentSlide < slides.length) {
+                    viewPager.setCurrentItem(2);
+                } else {
                     launchMainActivity();
                 }
             }
         });
     }
 
-    private void addBottomDots(int currentPage){
+    private void addBottomDots(int currentPage) {
         TextView[] dots = new TextView[slides.length];
 
         int[] activeDots = getResources().getIntArray(R.array.array_active_dots);
         int[] inactiveDots = getResources().getIntArray(R.array.array_inactive_dots);
 
         dotsLinearLayout.removeAllViews();
-        for(int i = 0; i < dots.length ; i++){
+        for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);
@@ -93,16 +93,16 @@ public class OnboardingActivity extends AppCompatActivity {
             dotsLinearLayout.addView(dots[i]);
         }
 
-        if(dots.length > 0){
+        if (dots.length > 0) {
             dots[currentPage].setTextColor(activeDots[currentPage]);
         }
     }
 
-    private int getItem(){
+    private int getItem() {
         return viewPager.getCurrentItem() + 1;
     }
 
-    private void launchMainActivity(){
+    private void launchMainActivity() {
         sharedPrefManager.setIsFirstLaunch(false);
 
         Intent toMainIntent = new Intent(OnboardingActivity.this, MainActivity.class);
@@ -127,15 +127,15 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     };
 
-    private void changeStatusBarColor(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+    private void changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
 
-    public class ViewPagerAdapter extends PagerAdapter{
+    public class ViewPagerAdapter extends PagerAdapter {
 
         public ViewPagerAdapter() {
         }

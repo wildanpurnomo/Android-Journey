@@ -4,22 +4,21 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.TimePicker;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import android.widget.TimePicker;
 
 import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-    DialogTimeListener dialogTimeListener;
+    private DialogTimeListener dialogTimeListener;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context != null) {
-            dialogTimeListener = (DialogTimeListener) context;
-        }
+        dialogTimeListener = (DialogTimeListener) context;
     }
 
     @Override

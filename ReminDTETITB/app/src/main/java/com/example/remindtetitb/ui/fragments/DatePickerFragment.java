@@ -4,22 +4,21 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.DatePicker;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import android.widget.DatePicker;
 
 import java.util.Calendar;
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-    DialogDateListener dialogDateListener;
+    private DialogDateListener dialogDateListener;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context != null) {
-            dialogDateListener = (DialogDateListener) context;
-        }
+        dialogDateListener = (DialogDateListener) context;
     }
 
     @Override
@@ -45,7 +44,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         dialogDateListener.onDialogDateSet(getTag(), year, month, dayOfMonth);
     }
 
-    public interface DialogDateListener{
+    public interface DialogDateListener {
         void onDialogDateSet(String tag, int year, int month, int dayOfMonth);
     }
 }

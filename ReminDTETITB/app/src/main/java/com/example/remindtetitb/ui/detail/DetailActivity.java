@@ -24,6 +24,7 @@ import com.example.remindtetitb.utils.ParcelableUtil;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener, DatePickerFragment.DialogDateListener, TimePickerFragment.DialogTimeListener {
@@ -35,6 +36,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private Info info = new Info();
 
     private SharedPrefManager sharedPrefManager;
+    private OneTimeWorkRequest workRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +77,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         String DATE_PICKER_TAG = "DatePicker";
         String TIME_PICKER_TAG = "TimePicker";
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.imgbtn_detail_alarm_date:
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
                 datePickerFragment.show(getSupportFragmentManager(), DATE_PICKER_TAG);
@@ -90,42 +92,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 String date = tvDetailDateAlarm.getText().toString();
                 String hour = tvDetailHourAlarm.getText().toString();
 
-                if(date.equals(getString(R.string.detail_alarm_set_default_text)) || hour.equals(getString(R.string.detail_alarm_set_default_text))) {
+                if (date.equals(getString(R.string.detail_alarm_set_default_text)) || hour.equals(getString(R.string.detail_alarm_set_default_text))) {
                     Toast.makeText(this, "Jadwal belum diisi", Toast.LENGTH_SHORT).show();
-                } else{
+                } else {
                     sharedPrefManager.setAlarmSchedule(info.getId(), date + "_" + hour);
                     btnCancelAlarm.setEnabled(true);
-
-                    String[] dateArray = date.split("-");
-                    String[] timeArray = hour.split(":");
-
-                    Calendar dueTime = Calendar.getInstance();
-                    dueTime.set(Calendar.YEAR, Integer.parseInt(dateArray[0]));
-                    dueTime.set(Calendar.MONTH, Integer.parseInt(dateArray[1]) - 1);
-                    dueTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateArray[2]));
-                    dueTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]));
-                    dueTime.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]));
-                    dueTime.set(Calendar.SECOND, 0);
-
-                    Calendar currentTIme = Calendar.getInstance();
-                    long timeDiff = dueTime.getTimeInMillis() - currentTIme.getTimeInMillis();
-
-                    Constraints constraints = new Constraints.Builder()
-                            .build();
-
-                    Data.Builder builder = new Data.Builder();
-                    byte[] bytifiedInfo = ParcelableUtil.marshall(info);
-                    builder.putByteArray(AlarmWorker.BYTES, bytifiedInfo);
-                    Data data = builder.build();
-
-                    OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(AlarmWorker.class)
-                            .setInputData(data)
-                            .setConstraints(constraints)
-                            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
-                            .build();
-
-                    WorkManager.getInstance(this).enqueue(workRequest);
-                    Toast.makeText(this, "Pengingat dipasang", Toast.LENGTH_SHORT).show();
+                    setAlarm(date, hour);
                 }
                 break;
 
@@ -134,6 +106,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 btnCancelAlarm.setEnabled(false);
                 tvDetailDateAlarm.setText(getString(R.string.detail_alarm_set_default_text));
                 tvDetailHourAlarm.setText(getString(R.string.detail_alarm_set_default_text));
+                cancelAlarm(workRequest.getId());
                 break;
         }
     }
@@ -155,5 +128,42 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
         tvDetailHourAlarm.setText(dateFormat.format(calendar.getTime()));
+    }
+
+    private void setAlarm(String date, String hour) {
+        String[] dateArray = date.split("-");
+        String[] timeArray = hour.split(":");
+
+        Calendar dueTime = Calendar.getInstance();
+        dueTime.set(Calendar.YEAR, Integer.parseInt(dateArray[0]));
+        dueTime.set(Calendar.MONTH, Integer.parseInt(dateArray[1]) - 1);
+        dueTime.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateArray[2]));
+        dueTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]));
+        dueTime.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]));
+        dueTime.set(Calendar.SECOND, 0);
+
+        Calendar currentTIme = Calendar.getInstance();
+        long timeDiff = dueTime.getTimeInMillis() - currentTIme.getTimeInMillis();
+
+        Constraints constraints = new Constraints.Builder()
+                .build();
+
+        Data.Builder builder = new Data.Builder();
+        byte[] bytifiedInfo = ParcelableUtil.marshall(info);
+        builder.putByteArray(AlarmWorker.BYTES, bytifiedInfo);
+        Data data = builder.build();
+
+        workRequest = new OneTimeWorkRequest.Builder(AlarmWorker.class)
+                .setInputData(data)
+                .setConstraints(constraints)
+                .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+                .build();
+
+        WorkManager.getInstance(this).enqueue(workRequest);
+        Toast.makeText(this, "Pengingat dipasang", Toast.LENGTH_SHORT).show();
+    }
+
+    private void cancelAlarm(UUID requestID) {
+        WorkManager.getInstance(this).cancelWorkById(requestID);
     }
 }

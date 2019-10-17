@@ -16,35 +16,35 @@ public class SharedPrefManager {
         editor = sharedPreferences.edit();
     }
 
-    public void setIsFirstLaunch(boolean isFirstLaunch){
+    public void setIsFirstLaunch(boolean isFirstLaunch) {
         editor.putBoolean(IS_FIRST_LAUNCH, isFirstLaunch);
         editor.commit();
     }
 
-    public void setFilterInfo(String filterInfo){
+    public void setFilterInfo(String filterInfo) {
         editor.putString(FILTER_INFO, filterInfo);
         editor.commit();
     }
 
-    public boolean isFirstLaunch(){
+    public boolean isFirstLaunch() {
         return sharedPreferences.getBoolean(IS_FIRST_LAUNCH, true);
     }
 
-    public String filterInfo(){
+    public String filterInfo() {
         return sharedPreferences.getString(FILTER_INFO, "all");
     }
 
-    public void setAlarmSchedule(String infoID, String datetime){
+    public void setAlarmSchedule(String infoID, String datetime) {
         editor.putString(infoID, datetime);
         editor.commit();
     }
 
-    public void deleteAlarmSchedule(String infoID){
+    public void deleteAlarmSchedule(String infoID) {
         editor.remove(infoID);
         editor.commit();
     }
 
-    public String getAlarmSchedule(String infoID){
+    public String getAlarmSchedule(String infoID) {
         return sharedPreferences.getString(infoID, null);
     }
 }
