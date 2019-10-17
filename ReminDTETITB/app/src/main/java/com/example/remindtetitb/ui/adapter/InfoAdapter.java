@@ -20,6 +20,7 @@ import com.example.remindtetitb.model.Info;
 import com.example.remindtetitb.ui.detail.DetailActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> implements Filterable {
     private Context context;
@@ -39,6 +40,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> im
     }
 
     public void setListInfo(ArrayList<Info> listInfo) {
+        Collections.reverse(listInfo);
         this.defaultInfo = listInfo;
         filteredListInfo = this.defaultInfo;
         notifyDataSetChanged();

@@ -21,8 +21,6 @@ import java.util.Locale;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener, DatePickerFragment.DialogDateListener, TimePickerFragment.DialogTimeListener {
     public static final String EXTRA_INFO = "extra_info";
-    private static final String STATE_DATE = "StateDate";
-    private static final String STATE_HOUR = "StateHour";
 
     private TextView tvDetailDateAlarm;
     private TextView tvDetailHourAlarm;
@@ -59,11 +57,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnDetailLabel.setBackground(getDrawable(info.getLabel().equals("Perkuliahan") ? R.drawable.bg_tag_kuliah : R.drawable.bg_tag_akademik));
         btnDetailLabel.setText(info.getLabel().equals("Perkuliahan") ? "Kuliah" : "Akademik");
 
-        if (savedInstanceState != null) {
-            tvDetailDateAlarm.setText(savedInstanceState.getString(STATE_DATE));
-            tvDetailHourAlarm.setText(savedInstanceState.getString(STATE_HOUR));
-        }
-
         if (sharedPrefManager.getAlarmSchedule(info.getId()) != null) {
             String datetime = sharedPrefManager.getAlarmSchedule(info.getId());
             String[] splitter = datetime.split("_");
@@ -71,13 +64,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             tvDetailHourAlarm.setText(splitter[1]);
             btnCancelAlarm.setEnabled(true);
         }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putString(STATE_DATE, tvDetailDateAlarm.getText().toString());
-        outState.putString(STATE_HOUR, tvDetailHourAlarm.getText().toString());
-        super.onSaveInstanceState(outState);
     }
 
     @Override

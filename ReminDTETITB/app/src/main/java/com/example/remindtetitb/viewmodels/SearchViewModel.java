@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.example.remindtetitb.apirequest.CallbackWithRetry;
 import com.example.remindtetitb.apirequest.HttpRequest;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Response;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class SearchViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Info>> searchResults = new MutableLiveData<>();
@@ -31,6 +34,7 @@ public class SearchViewModel extends ViewModel {
             @Override
             public void onResponse(@NonNull Call<ArrayList<Info>> call, @NonNull Response<ArrayList<Info>> response) {
                 if (response.body() != null) {
+                    Log.d(TAG, "onResponse: " + response);
                     searchResults.postValue(response.body());
                 }
             }

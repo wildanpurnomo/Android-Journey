@@ -80,18 +80,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_main_line">
 
-        <com.example.remindtetitb.ui.custom.StatefulRecyclerView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_main_allinfo"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/info_placeholder" />
-
-        <com.example.remindtetitb.ui.custom.StatefulRecyclerView
-            android:id="@+id/rv_main_search"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scrollbars="vertical"
             tools:listitem="@layout/info_placeholder" />
 
