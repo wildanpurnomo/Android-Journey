@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
@@ -27,15 +28,17 @@ import com.example.remindtetitb.viewmodels.SearchViewModel;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, MenuItem.OnActionExpandListener, SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, MenuItem.OnActionExpandListener, SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
     private static String SAVED_LIST = "saved_list";
     private static String SAVED_SEARCH = "saved_searched";
     private static String SAVED_QUERY = "saved_query";
     private static String SAVED_STATE = "saved_state";
 
     private SharedPrefManager sharedPrefManager;
+    private InfoViewModel infoViewModel;
     private SearchViewModel searchViewModel;
 
+    private SwipeRefreshLayout refreshLayout;
     private StatefulRecyclerView rvInfoAkademik, rvSearchedInfo;
     private ProgressBar pbLoading;
     private InfoAdapter infoAdapter = new InfoAdapter();
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         sharedPrefManager = new SharedPrefManager(this);
-        InfoViewModel infoViewModel = ViewModelProviders.of(this).get(InfoViewModel.class);
+        infoViewModel = ViewModelProviders.of(this).get(InfoViewModel.class);
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel.class);
         infoAdapter.setContext(this);
         searchAdapter.setContext(this);
@@ -67,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             isSearching = savedInstanceState.getBoolean(SAVED_STATE);
         }
 
+        refreshLayout = findViewById(R.id.swiperefresh_main_info_container);
+        refreshLayout.setOnRefreshListener(this);
         pbLoading = findViewById(R.id.pb_main_loading);
 
         Toolbar toolbarSearch = findViewById(R.id.toolbar_search);
@@ -240,6 +245,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    @Override
+    public void onRefresh() {
+        if(isSearching){
+            searchViewModel.setSearchResults(searchQuery);
+        } else{
+            infoViewModel.setListInfo();
+        }
+    }
+
     private void displayLoading(boolean isLoading){
         if (isLoading) {
             pbLoading.setVisibility(View.VISIBLE);
@@ -247,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             rvSearchedInfo.setVisibility(View.GONE);
         } else{
             pbLoading.setVisibility(View.GONE);
+            refreshLayout.setRefreshing(false);
             if (isSearching) {
                 rvSearchedInfo.setVisibility(View.VISIBLE);
             } else{
@@ -254,6 +269,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
-
-
 }

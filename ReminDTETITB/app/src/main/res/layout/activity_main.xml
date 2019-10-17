@@ -70,58 +70,30 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-<!--    <android.support.v4.widget.SwipeRefreshLayout-->
-<!--        android:id="@+id/swiperefresh_main_info_container"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/view_main_line">-->
-
-<!--        <android.support.v7.widget.RecyclerView-->
-<!--            android:id="@+id/rv_main_allinfo"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            tools:listitem="@layout/info_placeholder" />-->
-
-<!--        <android.support.v7.widget.RecyclerView-->
-<!--            android:id="@+id/rv_main_search"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:visibility="gone"-->
-<!--            tools:listitem="@layout/info_placeholder" />-->
-
-<!--    </android.support.v4.widget.SwipeRefreshLayout>-->
-
-
-    <com.example.remindtetitb.ui.custom.StatefulRecyclerView
-        android:id="@+id/rv_main_allinfo"
-        android:layout_width="0dp"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh_main_info_container"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_main_line"
-        tools:listitem="@layout/info_placeholder" />
+        app:layout_constraintTop_toBottomOf="@+id/view_main_line">
 
-    <com.example.remindtetitb.ui.custom.StatefulRecyclerView
-        android:id="@+id/rv_main_search"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_main_line"
-        tools:listitem="@layout/info_placeholder" />
+        <com.example.remindtetitb.ui.custom.StatefulRecyclerView
+            android:id="@+id/rv_main_allinfo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/info_placeholder" />
 
+        <com.example.remindtetitb.ui.custom.StatefulRecyclerView
+            android:id="@+id/rv_main_search"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/info_placeholder" />
 
+    </android.support.v4.widget.SwipeRefreshLayout>
 </android.support.constraint.ConstraintLayout>
